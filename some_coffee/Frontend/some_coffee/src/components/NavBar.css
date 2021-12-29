@@ -28,7 +28,27 @@
   color: rgb(0, 0, 0);
 }
 
+.top li {
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  float: right;
+  margin-right: 4%;
+}
+
+.veryTop {
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+}
+
 #instagram {
-  float: left;
+  margin-top: 1.5%;
   margin-left: 5%;
+  width: 2%;
+  height: 2%;
+}
+
+#logo {
+  width: 10%;
 }

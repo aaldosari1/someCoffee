@@ -8,9 +8,9 @@ import About from "./components/About";
 import Product from "./components/Product";
 import Menu from "./components/Menu";
 import MenuDetails from "./components/MenuDetails";
-import StarRating from "./components/StarRating";
 
 import { Routes, Route } from "react-router-dom";
+import Reservation from "./components/Reservation";
 function App() {
   return (
     <div className="App">
@@ -25,8 +25,8 @@ function App() {
           <Route path="/Product" element={<Product />} />
           <Route path="/Menu" element={<Menu />} />
           <Route path="/MenuDetails/:id" element={<MenuDetails />} />
+          <Route path="/Reservation" element={<Reservation />} />
         </Routes>
-        <StarRating />
       </div>
     </div>
   );

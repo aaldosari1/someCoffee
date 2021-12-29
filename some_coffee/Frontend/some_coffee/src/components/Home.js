@@ -1,8 +1,11 @@
+import HeroSection from "./HeroSection";
 function Home() {
   return (
-    <div>
-      <h1>hello from the home</h1>
-    </div>
+    <>
+      <div className="App">
+        <HeroSection />
+      </div>
+    </>
   );
 }
 

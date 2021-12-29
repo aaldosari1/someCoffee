@@ -8,6 +8,7 @@ import java.util.List;
 
 
 @RestController
+@CrossOrigin("*") //remember this
 @RequestMapping(path = "reservation")
 public class ReservationController {
 

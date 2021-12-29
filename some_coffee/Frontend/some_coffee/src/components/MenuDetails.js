@@ -1,6 +1,8 @@
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
+import StarRating from "./StarRating";
 import axios from "axios";
+
 function MenuDetails() {
   const { id } = useParams();
 
@@ -33,6 +35,7 @@ function MenuDetails() {
           );
         }
       })}
+      <StarRating />
     </div>
   );
 }

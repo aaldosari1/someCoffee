@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@CrossOrigin("*") //remember this 
 @RequestMapping(path = "review")
 public class ReviewController {
 
