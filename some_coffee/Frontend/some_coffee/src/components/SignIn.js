@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import { addUser, addToken } from "../reducers/user/actions";
+import { useNavigate } from "react-router-dom";
 import jwt_decode from "jwt-decode";
 import axios from "axios";
 
@@ -10,6 +11,7 @@ function SignIn() {
   const [password, setPassword] = useState("");
   const [userName, setUserName] = useState("");
   const [pro, setPro] = useState("");
+  const navigate = useNavigate();
 
   const state = useSelector((state) => {
     return {
@@ -40,6 +42,7 @@ function SignIn() {
         const token_action = addToken(token);
         dispatch(user_action);
         dispatch(token_action);
+        navigate("/");
       })
       .catch((err) => {
         console.log(err);

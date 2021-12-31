@@ -18,7 +18,7 @@ public class User {
     private String userName;
     private String password;
     private int age;
-    private int phone;
+    private String phone;
     private String email;
 
     @ManyToMany(fetch = FetchType.EAGER)
@@ -33,7 +33,7 @@ public class User {
         this.email = email;
     }
 
-    public User(Long userId, String name, String userName, String password, int age, int phone, String email) {
+    public User(Long userId, String name, String userName, String password, int age, String phone, String email) {
         this.userId = userId;
         this.name = name;
         this.userName = userName;
@@ -83,11 +83,11 @@ public class User {
         this.age = age;
     }
 
-    public int getPhone() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(int phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 

@@ -8,6 +8,7 @@ import About from "./components/About";
 import Product from "./components/Product";
 import Menu from "./components/Menu";
 import MenuDetails from "./components/MenuDetails";
+import ReservationConfirm from "./components/ReservationConfirm";
 
 import { Routes, Route } from "react-router-dom";
 import Reservation from "./components/Reservation";
@@ -26,6 +27,7 @@ function App() {
           <Route path="/Menu" element={<Menu />} />
           <Route path="/MenuDetails/:id" element={<MenuDetails />} />
           <Route path="/Reservation" element={<Reservation />} />
+          <Route path="/ReservationConfirm" element={<ReservationConfirm />} />
         </Routes>
       </div>
     </div>
