@@ -1,16 +1,26 @@
-#coffee {
-  margin-top: 10px;
-}
-
-.Menu {
+.myDiv {
   display: flex;
 }
 
-.menuItems img {
+.myDiv img {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  margin-left: 25%;
+  width: 180px;
+  border-radius: 10%;
+  align-self: center;
+  justify-self: center;
 }
+.menu-imgs {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 80px;
+  margin-top: 3%;
+  margin-left: 8%;
+}
+.Menu {
+  border-right: rgb(199, 198, 198) solid;
+  margin-bottom: 2%;
+}
+
 ul {
   list-style-type: none;
   margin: 0;

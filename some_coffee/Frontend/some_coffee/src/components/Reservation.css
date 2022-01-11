@@ -1,3 +1,15 @@
+.Reservation {
+  background-image: linear-gradient(
+      hsla(240, 6%, 72%, 0.747),
+      rgba(101, 114, 128)
+    ),
+    url("../img/coffee-cup.jpg");
+  background-repeat: no-repeat;
+  /* background-attachment: fixed; */
+  background-size: cover;
+  height: 1000px;
+  width: 100%;
+}
 #tables {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;

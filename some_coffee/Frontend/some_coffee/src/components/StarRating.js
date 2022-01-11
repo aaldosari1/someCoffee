@@ -3,7 +3,7 @@ import { FaStar } from "react-icons/fa";
 import axios from "axios";
 import "./StarRating.css";
 
-function StarRating() {
+function StarRating(myId) {
   const [comment, setComment] = useState("");
   const [rating, setRating] = useState(null);
   const [hover, setHover] = useState(null);
@@ -18,9 +18,10 @@ function StarRating() {
   };
 
   const insertReview = () => {
+    console.log(myId.myId);
     const data = {
       review: { reviewDate: getDate(), comment, rate: rating },
-      productId: 1,
+      productId: myId.myId,
       userId: 1,
     };
     axios
@@ -56,9 +57,11 @@ function StarRating() {
           );
         })}
       </div>
+      <br />
       <label>
         <textarea placeholder="Write your review" onChange={getComment} />
       </label>
+      <br />
       <button onClick={insertReview}> Submit review</button>
     </div>
   );

@@ -21,7 +21,13 @@ function NavBar() {
     <div>
       <br />
       <div className="veryTop">
-        <img src="Images/instagram-icon.png" id="instagram" />
+        <a
+          className="media-icon"
+          href={"https://www.instagram.com/somecoffee.sa/?hl=en"}
+        >
+          <img src="Images/instagram-icon.png" id="instagram" />
+        </a>
+
         <img src="Images/Logo.png" id="logo" />
       </div>
       <div className="top">
@@ -31,8 +37,9 @@ function NavBar() {
           {state.isLogedIn ? (
             <>
               <div className="profile-name">
-                <p className="user-first-name">{state.user.userName}</p>
-                <button onClick={signOut}>logout</button>
+                <p className="user-first-name" onClick={signOut}>
+                  {state.user.userName}
+                </p>
               </div>
             </>
           ) : (

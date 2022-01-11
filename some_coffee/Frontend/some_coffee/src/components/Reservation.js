@@ -1,3 +1,4 @@
+import background from "../img/coffee-cup.jpg";
 import { FaSquare } from "react-icons/fa";
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
@@ -71,6 +72,37 @@ function Reservation() {
     }
   };
 
+  const insertReservation = () => {
+    if (table1 || table2 || table3) {
+      const data = {
+        reservation: { reservationDate: date, reservationTime: time },
+        tableId: tableId,
+        userId: 1,
+      };
+      axios
+        .post("http://localhost:8080/reservation", data)
+        .then((res) => {
+          let list = [reservation + data];
+          setReservation(list);
+          console.log(reservation);
+          navigate("/ReservationConfirm");
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    } else {
+      toast.error("Please select a table", {
+        position: "top-center",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    }
+  };
+
   useEffect(() => {
     axios
       .get(`http://localhost:8080/reservation`)
@@ -111,36 +143,9 @@ function Reservation() {
       });
   }, [time, date]);
 
-  const insertReservation = () => {
-    if (table1 || table2 || table3) {
-      const data = {
-        reservation: { reservationDate: date, reservationTime: time },
-        tableId: tableId,
-        userId: 1,
-      };
-      axios
-        .post("http://localhost:8080/reservation", data)
-        .then((res) => {
-          navigate("/ReservationConfirm");
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    } else {
-      toast.error("Please select a table", {
-        position: "top-center",
-        autoClose: 2000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-      });
-    }
-  };
-
   return (
-    <div>
+    <div className="Reservation">
+      <br /> <br />
       {state.isLogedIn ? (
         <>
           <label className="date-label" htmlFor="fromDate">
@@ -202,7 +207,8 @@ function Reservation() {
           <div>
             <ToastContainer />
           </div>
-          <br /> <br />
+          <br /> <br /> <br /> <br />
+          <br /> <br /> <br /> <br /> <br /> <br />
           <button onClick={insertReservation}> Confirm Reservation</button>
         </>
       ) : (
