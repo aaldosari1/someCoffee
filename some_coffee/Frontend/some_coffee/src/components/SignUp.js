@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addUser } from "../reducers/user/actions";
+import "./SignUp.css";
 import axios from "axios";
 
 function SignUp() {
@@ -63,7 +64,6 @@ function SignUp() {
 
   return (
     <div>
-      <h1>Sign Up</h1>
       <p>Please fill in this form to create an account.</p>
       <hr />
       <label htmlFor="name">

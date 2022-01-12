@@ -2,6 +2,7 @@ package com.example.some_coffee.Review;
 
 import com.example.some_coffee.Product.Product;
 import com.example.some_coffee.User.User;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 
@@ -15,7 +16,8 @@ public class Review {
     private double rate;
 
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.EAGER) // extra
+    @JsonIgnoreProperties("reviews")  // extra
     Product product;
     @ManyToOne(fetch = FetchType.EAGER)
     User user;

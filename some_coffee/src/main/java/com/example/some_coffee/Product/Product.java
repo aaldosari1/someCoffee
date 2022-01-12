@@ -1,9 +1,9 @@
 package com.example.some_coffee.Product;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.example.some_coffee.Review.Review;
+
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Product {
@@ -14,17 +14,20 @@ public class Product {
     private double price;
     private double cost;
     private String category;
+    @OneToMany(mappedBy = "product",cascade = CascadeType.ALL) // when you delete a product all the comments will be deleted as well
+    private List<Review>reviews; //extra
 
     public Product() {
 
     }
 
-    public Product(Long productId, String name, double price, double cost, String category) {
+    public Product(Long productId, String name, double price, double cost, String category, List<Review> reviews) {
         this.productId = productId;
         this.name = name;
         this.price = price;
         this.cost = cost;
         this.category = category;
+        this.reviews = reviews;
     }
 
     public double getCost() {
@@ -65,5 +68,13 @@ public class Product {
 
     public void setCategory(String category) {
         this.category = category;
+    }
+
+    public List<Review> getReviews() {
+        return reviews;
+    }
+
+    public void setReviews(List<Review> reviews) {
+        this.reviews = reviews;
     }
 }

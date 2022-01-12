@@ -55,3 +55,7 @@
 #logo {
   width: 10%;
 }
+
+.profile-name {
+  cursor: pointer;
+}

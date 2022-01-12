@@ -3,6 +3,7 @@ import { useState } from "react";
 import { addUser, addToken } from "../reducers/user/actions";
 import { useNavigate } from "react-router-dom";
 import jwt_decode from "jwt-decode";
+import "./SignIn.css";
 import axios from "axios";
 
 function SignIn() {
@@ -92,32 +93,52 @@ function SignIn() {
 
   return (
     <div>
-      <h1>Sign In</h1>
       <hr />
-      <label>
-        <b>User Name</b>
-      </label>
-      <input
-        id="entered_name"
-        onChange={getUserName}
-        type="text"
-        placeholder="Enter User Name"
-        name="name"
-        required
-      ></input>
-      <br />
-      <label htmlFor="psw">
-        <b>Password</b>
-      </label>
-      <input
-        type="password"
-        onChange={getPassword}
-        placeholder="Enter Password"
-        name="psw"
-        required
-      ></input>
-      <br />
-      <button onClick={adddUser}>Log in</button>
+      <div className="SignIn-container">
+        <div className="SignIn-content">
+          <img
+            className="SignIn-img"
+            src="/Images/instagramCup.jpg"
+            width="400"
+            height="500"
+          />
+
+          <div className="container">
+            <h1>Sign In</h1>
+            <p>Please fill in this form to sign in</p>
+            <hr />
+            <label for="User Name">
+              <b>User Name</b>
+            </label>
+            <input
+              type="text"
+              placeholder="Enter User Name"
+              name=" user name"
+              id="Sign in"
+              onChange={getUserName}
+              required
+            />
+            <label for="psw">
+              <b>Password</b>
+            </label>
+            <input
+              type="password"
+              placeholder="Enter Password"
+              name="psw"
+              id="psw"
+              onChange={getPassword}
+              required
+            />
+            <hr />
+            <button type="submit" className="registerbtn" onClick={adddUser}>
+              Login
+            </button>
+            <p>
+              By Siging in you agree to our <a href="#">Terms and Privacy</a>
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

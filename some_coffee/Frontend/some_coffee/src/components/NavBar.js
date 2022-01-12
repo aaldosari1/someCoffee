@@ -24,6 +24,7 @@ function NavBar() {
         <a
           className="media-icon"
           href={"https://www.instagram.com/somecoffee.sa/?hl=en"}
+          target="_blank"
         >
           <img src="Images/instagram-icon.png" id="instagram" />
         </a>
@@ -32,18 +33,16 @@ function NavBar() {
       </div>
       <div className="top">
         <li>
-          <Link to="/SignIn">Sign in</Link>
           <Link to="/SignUp">Sign up</Link>
           {state.isLogedIn ? (
             <>
               <div className="profile-name">
-                <p className="user-first-name" onClick={signOut}>
-                  {state.user.userName}
-                </p>
+                <p className="user-first-name">{state.user.userName}</p>
+                <p onClick={signOut}>Logout</p>
               </div>
             </>
           ) : (
-            ""
+            <Link to="/SignIn">Sign in</Link>
           )}
         </li>
       </div>
