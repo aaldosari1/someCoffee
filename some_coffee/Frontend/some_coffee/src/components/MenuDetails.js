@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { FaStar } from "react-icons/fa";
 import StarRating from "./StarRating";
-
+import NavBar from "./NavBar";
 import axios from "axios";
 
 function MenuDetails() {
@@ -20,9 +20,11 @@ function MenuDetails() {
     return {
       user: state.userReducer.user,
       token: state.userReducer.token,
+      items: state.itemReducer.items,
     };
   });
 
+  console.log(state.items);
   const config = {
     headers: { Authorization: `Bearer ${state.token}` },
   };
@@ -40,7 +42,7 @@ function MenuDetails() {
       .get(`http://localhost:8080/product/`, config)
       .then((res) => {
         setProducts(res.data);
-        console.log(res.data);
+        // console.log(res.data);
       })
       .catch((err) => {
         console.log(err);
@@ -49,8 +51,23 @@ function MenuDetails() {
 
   return (
     <div>
-      <h1>Product Id: {id}</h1>
-
+      <div className="menuDetails-nav">
+        <NavBar />
+      </div>
+      <br /> <br />
+      {state.items.map((element) => {
+        if (element.id == id) {
+          return (
+            <div className="MenuDetails-img">
+              <img src={element.img} />
+              <div className="menu-info">
+                <h1 className="MenuDetails-name">{element.name}</h1>
+                <h4 className="MenuDetails-caloris"> 200 caloris</h4>
+              </div>
+            </div>
+          );
+        }
+      })}
       {products.map((product) => {
         let num = parseInt(id);
         let total = 0;
@@ -62,7 +79,6 @@ function MenuDetails() {
               <h2> Item name: {product.name} </h2>
               <h2> Item price: {product.price} </h2>
               <h2> Item categery: {product.category} </h2>
-              <h2> Item categery: {product.reviews.length} </h2>
               {product.reviews.map((el) => {
                 total = el.rate + total;
                 count += 1;
@@ -103,52 +119,67 @@ function MenuDetails() {
                 <>
                   <StarRating myId={product.productId} />
                   <br />
-                  <button onClick={reviewField}>Cancel</button>
+                  <button onClick={reviewField} className="reviewsbtn">
+                    Cancel
+                  </button>
                 </>
               ) : (
-                <button onClick={reviewField}>Write review</button>
+                <button onClick={reviewField} className="reviewsbtn">
+                  Write review
+                </button>
               )}
               {showReview ? (
                 <>
-                  <button onClick={reviewsToggle}>Cancel</button>
+                  <button onClick={reviewsToggle} className="reviewsbtn">
+                    Cancel
+                  </button>
 
                   {product.reviews.map((e) => {
                     return (
-                      <div>
-                        <h3>{e.comment} </h3>
-                        <div>
-                          {[...Array(5)].map((star, i) => {
-                            const ratingValue = i + 1;
+                      <div className="comment-card">
+                        <div className="comment-header">
+                          <div className="left-side">
+                            <h6> {e.user.name}</h6>
+                            {[...Array(5)].map((star, i) => {
+                              const ratingValue = i + 1;
 
-                            return (
-                              <label>
-                                <input
-                                  type="radio"
-                                  name="rating"
-                                  // value={ratingValue}
-                                  //  onClick={() => setRating(ratingValue)}
-                                />
-                                <FaStar
-                                  className="star"
-                                  color={
-                                    ratingValue <= e.rate
-                                      ? "#ffc107"
-                                      : "#e4e5e9"
-                                  }
-                                  size={20}
-                                  //  onMouseEnter={() => setHover(ratingValue)}
-                                  // onMouseLeave={() => setHover(null)}
-                                />
-                              </label>
-                            );
-                          })}
+                              return (
+                                <label>
+                                  <input
+                                    type="radio"
+                                    name="rating"
+                                    // value={ratingValue}
+                                    //  onClick={() => setRating(ratingValue)}
+                                  />
+                                  <FaStar
+                                    className="star"
+                                    color={
+                                      ratingValue <= e.rate
+                                        ? "#ffc107"
+                                        : "#e4e5e9"
+                                    }
+                                    size={20}
+                                    //  onMouseEnter={() => setHover(ratingValue)}
+                                    // onMouseLeave={() => setHover(null)}
+                                  />
+                                </label>
+                              );
+                            })}
+                          </div>
+                          <div className="comment-date">
+                            <h6> {e.reviewDate}</h6>
+                          </div>
                         </div>
+
+                        <p>{e.comment}</p>
                       </div>
                     );
                   })}
                 </>
               ) : (
-                <button onClick={reviewsToggle}>show review</button>
+                <button onClick={reviewsToggle} className="reviewsbtn">
+                  show reviews
+                </button>
               )}{" "}
             </div>
           );

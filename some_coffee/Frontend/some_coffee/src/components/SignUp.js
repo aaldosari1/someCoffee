@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addUser } from "../reducers/user/actions";
 import "./SignUp.css";
+
 import axios from "axios";
 
 function SignUp() {
@@ -9,7 +10,7 @@ function SignUp() {
   const [name, setName] = useState("");
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
-  const [age, setAge] = useState("");
+  const [age, setAge] = useState(15);
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -64,52 +65,46 @@ function SignUp() {
 
   return (
     <div>
-      <p>Please fill in this form to create an account.</p>
       <hr />
-      <label htmlFor="name">
-        <b>Name</b>
-      </label>
-      <input
-        type="text"
-        onChange={getName}
-        placeholder="Enter Name"
-        name="name"
-        required
-      ></input>
-      <br />
-      <label htmlFor="user">
-        <b>User Name</b>
-      </label>
-      <input
-        type="text"
-        onChange={getUserName}
-        placeholder="Enter User Name"
-        name="name"
-        required
-      ></input>
-      <br />
-      <label htmlFor="email">
-        <b>Email</b>
-      </label>
-      <input
-        type="text"
-        onChange={getEmail}
-        placeholder="Enter Email"
-        name="email"
-        required
-      ></input>
-      <br />
-      <label htmlFor="phone">
-        <b>Phone No.</b>
-      </label>
-      <input
-        type="text"
-        onChange={getPhone}
-        placeholder="Enter User Name"
-        name="name"
-        required
-      ></input>
-      <br />
+      <div className="SignUp-content">
+        <img className="SignUp-img" src="/Images/post.png" />
+        <div className="container">
+          <h2 className="Sing-up-h2">Sign Up</h2>
+          <input
+            type="text"
+            onChange={getName}
+            placeholder="Enter Name"
+            name="name"
+            required
+          ></input>
+
+          <input
+            icon="users"
+            type="text"
+            onChange={getUserName}
+            placeholder="Enter User Name"
+            name="name"
+            required
+          ></input>
+          <span className="fa fa-info-circle errspan"></span>
+          <i className="icon-search icon-2x"></i>
+
+          <input
+            type="text"
+            onChange={getEmail}
+            placeholder="Enter Email"
+            name="email"
+            required
+          ></input>
+
+          <input
+            type="text"
+            onChange={getPhone}
+            placeholder="Enter Phone No."
+            name="phone"
+            required
+          ></input>
+          {/* <br />
       <label htmlFor="age">
         <b>Age</b>
       </label>
@@ -119,31 +114,29 @@ function SignUp() {
         placeholder="Enter User Name"
         name="name"
         required
-      ></input>
-      <br />
-      <label htmlFor="psw">
-        <b>Password</b>
-      </label>
-      <input
-        type="password"
-        onChange={getPassword}
-        placeholder="Enter Password"
-        name="psw"
-        required
-      ></input>
-      <br />
-      <label htmlFor="psw-repeat">
-        <b>Confirm Password</b>
-      </label>
-      <input
-        type="password"
-        onChange={getConfirmPassword}
-        placeholder="Repeat Password"
-        name="psw-repeat"
-        required
-      ></input>
-      <br />
-      <button onClick={insertUser}>Sign up</button>
+      ></input> */}
+
+          <input
+            type="password"
+            onChange={getPassword}
+            placeholder="Enter Password"
+            name="psw"
+            required
+          ></input>
+
+          <input
+            type="password"
+            onChange={getConfirmPassword}
+            placeholder="Confirm Password"
+            name="psw-repeat"
+            required
+          ></input>
+          <hr />
+          <button className="registerbtn " onClick={insertUser}>
+            Let's do this
+          </button>
+        </div>
+      </div>
     </div>
   );
 }

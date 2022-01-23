@@ -3,8 +3,10 @@ package com.example.some_coffee.Review;
 import com.example.some_coffee.Product.Product;
 import com.example.some_coffee.User.User;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Review {
@@ -19,18 +21,26 @@ public class Review {
     @ManyToOne(fetch = FetchType.EAGER) // extra
     @JsonIgnoreProperties("reviews")  // extra
     Product product;
-    @ManyToOne(fetch = FetchType.EAGER)
-    User user;
+  //  @ManyToOne(fetch = FetchType.EAGER)
+    //User user;
+
+    @ManyToOne // when you delete a product all the comments will be deleted as well
+    @JoinColumn(name="userId")
+    @JsonIgnoreProperties("reviews")
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
+    private User user; //extra
 
     public Review(){
 
     }
 
-    public Review(Long reviewId, String reviewDate, String comment, double rate) {
+    public Review(Long reviewId, String reviewDate, String comment, double rate, Product product, User user) {
         this.reviewId = reviewId;
         this.reviewDate = reviewDate;
         this.comment = comment;
         this.rate = rate;
+        this.product = product;
+        this.user = user;
     }
 
     public Long getReviewId() {
@@ -75,4 +85,6 @@ public class Review {
         this.product=product;
     }
     public Product getProduct(){return product;}
+
+
 }

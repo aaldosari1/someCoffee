@@ -1,5 +1,7 @@
 import background from "../img/coffee-cup.jpg";
-import { FaSquare } from "react-icons/fa";
+import { FacaretLeft } from "react-icons/fa";
+import { FaCircle } from "react-icons/fa";
+import { FaChair } from "react-icons/fa";
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -20,60 +22,34 @@ function Reservation() {
 
   const [tableId, setTableId] = useState(null);
   const [hover, setHover] = useState(null);
+  const [rating, setRating] = useState(null);
   const [time, setTime] = useState("4 PM");
+  const [resDis, setResDis] = useState([false, false, false]);
   const [date, setDate] = useState(yourDate.toISOString().split("T")[0]);
   const [reservation, setReservation] = useState([]);
   const navigate = useNavigate();
-  const [table1, setTable1] = useState(false);
-  const [table2, setTable2] = useState(false);
-  const [table3, setTable3] = useState(false);
-  const [flag1, setFlag1] = useState(true);
-  const [flag2, setFlag2] = useState(true);
-  const [flag3, setFlag3] = useState(true);
+  const [table, setTable] = useState(false);
 
   const getTime = (e) => {
     setTime(e.target.value);
+    setResDis([false, false, false]);
   };
 
   const getDate = (e) => {
     setDate(e.target.value);
+    setResDis([false, false, false]);
   };
 
-  const toggle1 = (e) => {
-    console.log(table1);
-    console.log(e.target.value);
-    setTable1(!table1);
-    setTableId(e.target.value);
-    if (table3 || table2) {
-      if (flag2) setTable2(false);
-      if (flag3) setTable3(false);
-    }
-  };
-
-  const toggle2 = (e) => {
-    console.log(table2);
+  const toggle = (e) => {
     console.log(e.target.value);
     setTableId(e.target.value);
-    setTable2(!table2);
-    if (table1 || table3) {
-      if (flag1) setTable1(false);
-      if (flag3) setTable3(false);
-    }
-  };
-
-  const toggle3 = (e) => {
-    console.log(table3);
-    console.log(e.target.value);
-    setTableId(e.target.value);
-    setTable3(!table3);
-    if (table1 || table2) {
-      if (flag1) setTable1(false);
-      if (flag2) setTable2(false);
-    }
+    setTable(!table);
+    if (rating == null) setRating(e.target.value);
+    else setRating(null);
   };
 
   const insertReservation = () => {
-    if (table1 || table2 || table3) {
+    if (table) {
       const data = {
         reservation: { reservationDate: date, reservationTime: time },
         tableId: tableId,
@@ -108,40 +84,46 @@ function Reservation() {
       .get(`http://localhost:8080/reservation`)
       .then((res) => {
         setReservation(res.data);
-
-        setTable1(false);
-        setTable2(false);
-        setTable3(false);
-        setFlag1(true);
-        setFlag2(true);
-        setFlag3(true);
-        for (let i = 0; i < res.data.length; i++) {
-          //console.log(res.data[1].coffeeTable.tableId);
-          if (
-            time === res.data[i].reservationTime &&
-            date === res.data[i].reservationDate
-          ) {
-            for (let j = 1; j <= 3; j++) {
-              if (res.data[i].coffeeTable.tableId === 1) {
-                setTable1(true);
-                setFlag1(false);
-              }
-              if (res.data[i].coffeeTable.tableId === 2) {
-                setTable2(true);
-                setFlag2(false);
-              }
-              if (res.data[i].coffeeTable.tableId === 3) {
-                setTable3(true);
-                setFlag3(false);
-              }
-            }
-          }
-        }
+        console.log("updated");
       })
       .catch((err) => {
         console.log(err);
       });
+  }, []);
+
+  const showReservations = () => {
+    const copy = resDis.slice();
+    for (let i = 0; i < reservation.length; i++) {
+      if (
+        time === reservation[i].reservationTime &&
+        date === reservation[i].reservationDate
+      ) {
+        for (let j = 1; j <= 3; j++) {
+          if (reservation[i].coffeeTable.tableId === 1) {
+            copy.splice(0, 1, true);
+            setResDis(copy);
+          }
+          if (reservation[i].coffeeTable.tableId === 2) {
+            copy.splice(1, 1, true);
+            console.log("copy2: " + copy);
+            setResDis(copy);
+          }
+          if (reservation[i].coffeeTable.tableId === 3) {
+            console.log("copy3 befor : " + copy);
+            copy.splice(2, 1, true);
+            console.log("copy3 after: " + copy);
+            setResDis(copy);
+          }
+        }
+      }
+    }
+  };
+
+  useEffect(() => {
+    showReservations();
   }, [time, date]);
+
+  console.log(resDis);
 
   return (
     <div className="Reservation">
@@ -171,38 +153,56 @@ function Reservation() {
             </select>
           </div>
           <br /> <br /> <br />
-          <div id="tables">
-            <label>
-              <input id="invisible" defaultValue={1} onClick={toggle1} />
-              <FaSquare
-                className="star"
-                color={table1 ? "blue" : "#e4e5e9"}
-                size={50}
-                onMouseEnter={() => setHover(1)}
-                onMouseLeave={() => setHover(null)}
-              />
-            </label>
-
-            <label>
-              <input id="invisible" defaultValue={2} onClick={toggle2} />
-              <FaSquare
-                className="star"
-                color={table2 ? "blue" : "#e4e5e9"}
-                size={50}
-                onMouseEnter={() => setHover(2)}
-                onMouseLeave={() => setHover(null)}
-              />
-            </label>
-            <label>
-              <input id="invisible" defaultValue={3} onClick={toggle3} />
-              <FaSquare
-                className="star"
-                color={table3 ? "blue" : "#e4e5e9"}
-                size={50}
-                onMouseEnter={() => setHover(3)}
-                onMouseLeave={() => setHover(null)}
-              />
-            </label>
+          <div className="contaning-father">
+            <div className="table-selection">
+              <h2>Select Your Table </h2>
+            </div>
+            <div className="father">
+              <div id="tables">
+                {[...Array(9)].map((circle, i) => {
+                  const ratingValue = i + 1;
+                  return (
+                    <label>
+                      <input
+                        type="radio"
+                        name="rating"
+                        value={ratingValue}
+                        onClick={toggle}
+                      />
+                      <FaCircle
+                        className="circle"
+                        color={
+                          resDis[i] ||
+                          ratingValue == hover ||
+                          rating == ratingValue
+                            ? "red"
+                            : "#5881d4"
+                        }
+                        size={50}
+                        onMouseEnter={() => setHover(ratingValue)}
+                        onMouseLeave={() => setHover(null)}
+                      />{" "}
+                      <FaChair
+                        className="circle"
+                        color={
+                          resDis[i] ||
+                          ratingValue == hover ||
+                          rating == ratingValue
+                            ? "red"
+                            : "#5881d4"
+                        }
+                        size={50}
+                        onMouseEnter={() => setHover(ratingValue)}
+                        onMouseLeave={() => setHover(null)}
+                      />
+                      <p className="num-of-seats">
+                        seats: {ratingValue > 5 ? 3 : 4}{" "}
+                      </p>
+                    </label>
+                  );
+                })}
+              </div>
+            </div>
           </div>
           <div>
             <ToastContainer />

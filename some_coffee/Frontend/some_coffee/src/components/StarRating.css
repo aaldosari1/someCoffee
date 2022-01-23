@@ -6,3 +6,15 @@
 input[type="radio"] {
   display: none;
 }
+
+.submitbtn {
+  background-color: rgb(225, 251, 255);
+  color: rgb(15, 111, 201);
+  padding: 10px 20px;
+  margin: 8px 0 40px 0px;
+  border: solid rgb(15, 111, 201);
+  cursor: pointer;
+  width: 10%;
+  border-radius: 30px;
+  margin: 1%;
+}

@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import jwt_decode from "jwt-decode";
 import "./SignIn.css";
 import axios from "axios";
+import { FaEdit } from "react-icons/fa";
 
 function SignIn() {
   const dispatch = useDispatch();
@@ -94,49 +95,42 @@ function SignIn() {
   return (
     <div>
       <hr />
-      <div className="SignIn-container">
-        <div className="SignIn-content">
-          <img
-            className="SignIn-img"
-            src="/Images/instagramCup.jpg"
-            width="400"
-            height="500"
+      {/* <div className="SignIn-container"> */}
+      <div className="SignIn-content">
+        <img
+          className="SignIn-img"
+          src="/Images/instagramCup.jpg"
+          width="400"
+          height="500"
+        />
+
+        <div className="container">
+          <h2 className="Sing-in-h2">Sign in</h2>
+
+          <input
+            type="text"
+            placeholder="Enter User Name"
+            name=" user name"
+            id="Sign in"
+            onChange={getUserName}
+            required
           />
 
-          <div className="container">
-            <h1>Sign In</h1>
-            <p>Please fill in this form to sign in</p>
-            <hr />
-            <label for="User Name">
-              <b>User Name</b>
-            </label>
-            <input
-              type="text"
-              placeholder="Enter User Name"
-              name=" user name"
-              id="Sign in"
-              onChange={getUserName}
-              required
-            />
-            <label for="psw">
-              <b>Password</b>
-            </label>
-            <input
-              type="password"
-              placeholder="Enter Password"
-              name="psw"
-              id="psw"
-              onChange={getPassword}
-              required
-            />
-            <hr />
-            <button type="submit" className="registerbtn" onClick={adddUser}>
-              Login
-            </button>
-            <p>
-              By Siging in you agree to our <a href="#">Terms and Privacy</a>
-            </p>
-          </div>
+          <input
+            type="password"
+            placeholder={"Enter Passwocrd"}
+            name="psw"
+            id="psw"
+            onChange={getPassword}
+            required
+          />
+          <hr />
+          <button type="submit" className="registerbtn" onClick={adddUser}>
+            Login
+          </button>
+          <p>
+            By Siging in you agree to our <a href="#">Terms and Privacy</a>
+          </p>
         </div>
       </div>
     </div>

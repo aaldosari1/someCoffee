@@ -1,18 +1,29 @@
+.nav-main-container {
+  background-image: linear-gradient(#e9d2b49c, rgb(31, 57, 51)),
+    url("../Images/table.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  height: 355px;
+  width: 100%;
+}
+
 .topnav {
   overflow: hidden;
   list-style: none;
   border: solid;
+  border-color: rgb(8, 8, 8);
   border-top-left-radius: 30px;
   border-bottom-left-radius: 30px;
   border-top-right-radius: 30px;
   border-bottom-right-radius: 30px;
-  margin-right: 20%;
   margin-left: 20%;
+  margin-right: 20%;
 }
 
 .topnav a {
   float: left;
-  color: #000000;
+  color: #222222;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
@@ -20,12 +31,12 @@
 }
 
 .topnav a:hover {
-  background-color: rgb(243, 190, 130);
-  color: black;
+  background-color: #e9d2b491;
+  color: rgb(29, 29, 29);
 }
 
 .topnav a.active {
-  color: rgb(0, 0, 0);
+  color: rgb(29, 29, 29);
 }
 
 .top li {
@@ -34,11 +45,13 @@
   flex-direction: row;
   float: right;
   margin-right: 4%;
+  color: rgb(19, 17, 17);
 }
 
 .veryTop {
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
   list-style: none;
 }
 
@@ -53,9 +66,45 @@
 }
 
 #logo {
-  width: 10%;
+  width: 15%;
+  float: left;
+}
+.sign {
+  display: flex;
+
+  /* margin-right: 10%; */
+  /* flex-direction: row; */
 }
 
+.sign a {
+  display: flex;
+  /* margin-right: 10%; */
+  flex-direction: row;
+}
+
+#instagram {
+  float: left;
+  margin-top: 2.6%;
+  width: 2.6%;
+}
 .profile-name {
+  display: flex;
   cursor: pointer;
+}
+.top {
+  margin-top: 2%;
+  margin-right: 2%;
+  width: 30%;
+}
+.location-icon {
+  margin-top: 2.8%;
+  margin-left: 2.8%;
+  float: left;
+}
+
+.top a {
+  color: black;
+  padding: 8px 16px;
+  justify-content: space-between;
+  text-decoration: none;
 }

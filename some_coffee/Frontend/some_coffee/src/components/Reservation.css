@@ -1,19 +1,60 @@
 .Reservation {
   background-image: linear-gradient(
-      hsla(240, 6%, 72%, 0.747),
+      hsla(2, 40%, 62%, 0.26),
       rgba(101, 114, 128)
     ),
-    url("../img/coffee-cup.jpg");
+    url("../Images/table.jpg");
   background-repeat: no-repeat;
   /* background-attachment: fixed; */
   background-size: cover;
-  height: 1000px;
+  height: 900px;
   width: 100%;
 }
+
+/* .child1 {
+  background-color: rgb(9, 255, 0);
+  position: relative;
+  left: 10px;
+  margin: 1%;
+}
+
+.child2 {
+  background-color: rgb(196, 193, 44);
+  margin: 1%;
+} */
+
+.contaning-father {
+  display: flex;
+  flex-direction: column;
+}
+
 #tables {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
+  justify-content: space-between;
 }
+
+.father {
+  background-color: rgba(255, 255, 255, 0.418);
+  border: solid;
+  border-color: rgb(243, 196, 133);
+  margin-right: 4%;
+  margin-left: 4%;
+  padding-top: 2%;
+  padding-bottom: 2%;
+}
+
+.contaning-father h2 {
+  float: left;
+  margin-left: 10%;
+}
+.num-of-seats {
+  margin-left: 0%;
+}
+.circle {
+  cursor: pointer;
+}
+
 #invisible {
   display: none;
 }

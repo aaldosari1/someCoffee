@@ -59,10 +59,17 @@ function StarRating(myId) {
       </div>
       <br />
       <label>
-        <textarea placeholder="Write your review" onChange={getComment} />
+        <input
+          placeholder="Write your review"
+          onChange={getComment}
+          className="reveiw-input"
+        />
       </label>
       <br />
-      <button onClick={insertReview}> Submit review</button>
+      <button onClick={insertReview} className="submitbtn">
+        {" "}
+        Submit review
+      </button>
     </div>
   );
 }

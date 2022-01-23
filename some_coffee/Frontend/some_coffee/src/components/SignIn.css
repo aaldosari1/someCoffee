@@ -3,41 +3,56 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  margin-left: 10%;
-  margin-right: 10%;
-  margin-bottom: 2%;
-  padding: 16px;
+  margin-left: 25%;
+  margin-right: 25%;
+  margin-top: 6%;
+  /* padding: 16px; */
   background-color: white;
-  border: solid;
-  border-color: #ddd;
+  /* border: solid;
+  border-color: rgb(107, 107, 107); */
+  border-width: 1px;
   border-radius: 20px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 .SignIn-img {
-  border-radius: 65px;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
 }
 
 /* Add padding to containers */
 .container {
-  padding: 16px;
+  /* padding: 16px; */
   background-color: white;
+  margin-right: 0.3%;
+}
+.Sing-in-h2 {
+  margin-bottom: 11%;
+  margin-left: 1%;
 }
 
 /* Full-width input fields */
 input[type="text"],
 input[type="password"] {
-  width: 100%;
-  padding: 15px;
-  margin: 5px 0 22px 0;
+  width: 85%;
+  padding: 10px;
+  margin: 15px 0 22px 0;
   display: inline-block;
   border: none;
-  background: #f1f1f1;
+  background: #e6e6e6;
+  border-radius: 30px;
+  border: solid rgb(216, 216, 216);
+  border-width: 1px;
+  transition-duration: 0.5s;
 }
 
 input[type="text"]:focus,
 input[type="password"]:focus {
-  background-color: #ddd;
+  background-color: rgb(248, 248, 248);
   outline: none;
+  border: solid rgb(143, 143, 143);
+  border-width: 1px;
+  transition-duration: 0.5s;
 }
 
 /* Overwrite default styles of hr */
@@ -48,23 +63,19 @@ hr {
 
 /* Set a style for the submit button */
 .registerbtn {
-  background-color: #04aa6d;
+  background-color: rgb(10, 92, 62);
   color: white;
   padding: 16px 20px;
-  margin: 8px 0;
+  margin: 8px 0 40px 0px;
   border: none;
   cursor: pointer;
-  width: 100%;
+  width: 85%;
   opacity: 0.9;
+  border-radius: 30px;
 }
 
 .registerbtn:hover {
   opacity: 1;
-}
-
-/* Add a blue text color to links */
-a {
-  color: dodgerblue;
 }
 
 /* Set a grey background color and center the text of the "sign in" section */

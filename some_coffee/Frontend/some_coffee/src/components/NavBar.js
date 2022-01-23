@@ -2,6 +2,7 @@ import "./NavBar.css";
 import { Link } from "react-router-dom";
 import { removeUser } from "../reducers/user/actions";
 import { useDispatch, useSelector } from "react-redux";
+import { FaMapMarkerAlt } from "react-icons/fa";
 
 function NavBar() {
   const dispatch = useDispatch();
@@ -18,33 +19,40 @@ function NavBar() {
   };
 
   return (
-    <div>
-      <br />
+    <div className="nav-main-container">
       <div className="veryTop">
-        <a
-          className="media-icon"
-          href={"https://www.instagram.com/somecoffee.sa/?hl=en"}
-          target="_blank"
-        >
-          <img src="Images/instagram-icon.png" id="instagram" />
-        </a>
-
-        <img src="Images/Logo.png" id="logo" />
-      </div>
-      <div className="top">
-        <li>
-          <Link to="/SignUp">Sign up</Link>
-          {state.isLogedIn ? (
-            <>
+        <div>
+          <img src="Images/Logo1.png" id="logo" />
+          <a
+            className="media-icon"
+            href={"https://www.instagram.com/somecoffee.sa/?hl=en"}
+            target="_blank"
+          >
+            <img src="Images/instagram-icon2.jpg" id="instagram" />
+          </a>
+          <a
+            className="location-icon"
+            href={"https://maps.app.goo.gl/G2SEAtbSZYJk5L1b9"}
+            target="_blank"
+          >
+            <FaMapMarkerAlt color={"black"} size={24} />
+          </a>
+        </div>
+        <div className="top">
+          <li>
+            {state.isLogedIn ? (
               <div className="profile-name">
-                <p className="user-first-name">{state.user.userName}</p>
-                <p onClick={signOut}>Logout</p>
+                <Link to="/UserProfile">{state.user.userName}</Link>
+                <a onClick={signOut}>Logout</a>
               </div>
-            </>
-          ) : (
-            <Link to="/SignIn">Sign in</Link>
-          )}
-        </li>
+            ) : (
+              <div className="sign">
+                <Link to="/SignIn">Sign in</Link>
+                <Link to="/SignUp">Sign up</Link>
+              </div>
+            )}
+          </li>
+        </div>
       </div>
 
       <div className="topnav">

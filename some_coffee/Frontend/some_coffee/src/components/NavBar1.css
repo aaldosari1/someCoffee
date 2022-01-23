@@ -1,0 +1,105 @@
+.nav-main1 {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+/* .topnav1 {
+  overflow: hidden;
+  list-style: none;
+  border: solid;
+  border-color: floralwhite;
+  border-top-left-radius: 30px;
+  border-bottom-left-radius: 30px;
+  border-top-right-radius: 30px;
+  border-bottom-right-radius: 30px;
+  margin-top: 10%;
+} */
+
+.topnav1 a {
+  float: left;
+  color: #cfcccc;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 15px;
+}
+
+.profile-name1 {
+  display: flex;
+
+  cursor: pointer;
+}
+/*
+.topnav1 a {
+  float: left;
+  color: #cfcccc;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav1 a:hover {
+  background-color: rgb(243, 190, 130);
+  color: rgb(209, 209, 209);
+}
+
+.topnav1 a.active {
+  color: rgb(209, 209, 209);
+}
+*/
+
+.top1 {
+  float: right;
+  margin-right: 2.5%;
+  margin-top: 2%;
+}
+.top1 li {
+  list-style: none;
+  display: flex;
+  float: right;
+  color: rgb(214, 207, 207);
+}
+
+.top1 a {
+  float: right;
+  color: aliceblue;
+  padding: 8px 16px;
+  text-decoration: none;
+}
+/*
+.veryTop {
+  display: flex;
+  flex-direction: row;
+  float: left;
+  list-style: none;
+}
+
+.media-icon {
+  margin-top: 4%;
+  margin-left: 1%;
+  width: 30px;
+}*/
+
+/* #instagram {
+  float: left;
+  margin-top: 3%;
+  width: 3%;
+} */
+#instagram1 {
+  width: 2%;
+  margin-top: 2.5%;
+
+  float: left;
+}
+.location-icon1 {
+  margin-top: 2.4%;
+  margin-left: 2.3%;
+  float: left;
+}
+
+#logo1 {
+  width: 12%;
+  float: left;
+}

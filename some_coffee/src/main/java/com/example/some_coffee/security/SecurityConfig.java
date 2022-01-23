@@ -56,8 +56,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         // Define the authorization patterns below
         http.authorizeRequests().antMatchers(POST, "/signIn/**").permitAll();
-        http.authorizeRequests().antMatchers(POST, "/user").permitAll();
-        http.authorizeRequests().antMatchers(GET, "/user").permitAll();
+        http.authorizeRequests().antMatchers(POST, "/user/**").permitAll();
+        http.authorizeRequests().antMatchers(GET, "/user/**").permitAll();
         http.authorizeRequests().antMatchers(POST, "/role").permitAll();
         http.authorizeRequests().antMatchers(GET, "/role").permitAll();
         http.authorizeRequests().antMatchers(POST, "/table").permitAll();

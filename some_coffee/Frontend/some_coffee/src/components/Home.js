@@ -1,18 +1,20 @@
 import HeroSection from "./HeroSection";
+import NavBar1 from "./NavBar1";
+import NavBar0 from "./NavBar0";
 import "./Home.css";
 function Home() {
   return (
-    <>
-      <div
-        className="App"
-        style={{
-          backgroundImage: `url("./Images/coffee-cup.jpg)`,
-          backgroundRepeat: "no-repeat",
-        }}
-      >
+    <div>
+      <div className="home-nav">
+        <NavBar1 />
+      </div>
+      <div className="home-nav0">
+        <NavBar0 />
+      </div>
+      <div className="home-car">
         <HeroSection />
       </div>
-    </>
+    </div>
   );
 }
 

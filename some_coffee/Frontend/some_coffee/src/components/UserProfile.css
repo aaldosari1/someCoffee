@@ -1,0 +1,68 @@
+.profile {
+  display: flex;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px,
+    rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+}
+
+/* here */
+.user-reviews {
+  margin: 1.7%;
+  border-top-left-radius: 30px;
+  border-bottom-left-radius: 30px;
+  border-top-right-radius: 30px;
+  border-bottom-right-radius: 30px;
+  margin-left: 8%;
+  margin-right: 8%;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+/* here*/
+.profile-comment-header {
+  display: flex;
+  background-color: rgb(115, 168, 155);
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+  justify-content: space-between;
+}
+
+.List {
+  border-right: solid;
+  border-width: 1px;
+  border-color: rgb(206, 206, 206);
+}
+.List a {
+  text-decoration: none;
+  color: black;
+}
+
+.List li {
+  border-bottom: solid;
+  border-width: 1px;
+  border-color: rgb(206, 206, 206);
+}
+
+.user-profile {
+  margin-left: 17%;
+  margin-right: 27%;
+  border-radius: 4%;
+  padding: 3%;
+  margin-bottom: 5%;
+  display: flex;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+}
+
+.user-data {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0px 290px;
+}
+.user-data h6 {
+  display: flex;
+  float: left;
+}
+
+.data-div {
+  display: flex;
+  justify-content: space-between;
+}

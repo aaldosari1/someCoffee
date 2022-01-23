@@ -40,6 +40,7 @@ function Product() {
     <div>
       <h1>Product page</h1>
       <hr />
+
       <input
         onChange={getProduct}
         placeholder="Enter product name"
