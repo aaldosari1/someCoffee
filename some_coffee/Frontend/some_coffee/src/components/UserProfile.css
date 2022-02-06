@@ -1,5 +1,6 @@
 .profile {
   display: flex;
+  justify-content: space-between;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px,
     rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
 }
@@ -25,6 +26,9 @@
   justify-content: space-between;
 }
 
+.user-profile-container {
+  width: 50%;
+}
 .List {
   border-right: solid;
   border-width: 1px;
@@ -42,20 +46,22 @@
 }
 
 .user-profile {
-  margin-left: 17%;
-  margin-right: 27%;
-  border-radius: 4%;
+  border-radius: 20px;
   padding: 3%;
   margin-bottom: 5%;
   display: flex;
+  width: 100%;
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
     rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
 }
 
 .user-data {
   display: grid;
+  width: 100%;
   grid-template-columns: 1fr 1fr;
   gap: 0px 290px;
+  margin-right: 3%;
+  margin-left: 3%;
 }
 .user-data h6 {
   display: flex;
@@ -65,4 +71,71 @@
 .data-div {
   display: flex;
   justify-content: space-between;
+}
+
+.edit {
+  cursor: pointer;
+}
+.profile-input {
+  background-color: rgb(240, 240, 240);
+  width: 50%;
+  margin-top: 3.8%;
+  margin-bottom: 3.8%;
+}
+.savebtn {
+  background-color: rgb(255, 255, 255);
+  color: rgb(10, 92, 62);
+  padding: 6px 20px;
+  margin: 8px 0 40px 0px;
+  border: solid rgb(10, 92, 62);
+  cursor: pointer;
+  width: 35%;
+  border-radius: 30px;
+}
+.btnDiv {
+  width: 20%;
+  display: flex;
+  align-items: center;
+}
+.user-res-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  margin: 3%;
+  row-gap: 4%;
+  column-gap: 4%;
+}
+.user-res {
+  border-radius: 20px;
+  padding-top: 4%;
+  padding-left: 4%;
+  padding-right: 4%;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.resbtn {
+  background-color: rgb(255, 255, 255);
+  color: #ac2524;
+  padding: 6px 20px;
+  margin: 8px 0 40px 0px;
+  border: solid #ac2524;
+  cursor: pointer;
+  width: 35%;
+  border-radius: 30px;
+}
+
+.profile-top {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+.backbtn {
+  width: 25%;
+  margin-top: 5%;
+  margin-left: 5%;
+
+  background-color: rgb(250, 250, 250);
+  color: rgb(80, 80, 80);
+  padding: 7px 10px;
+  border: solid rgb(87, 87, 87);
+  cursor: pointer;
+  border-radius: 30px;
 }

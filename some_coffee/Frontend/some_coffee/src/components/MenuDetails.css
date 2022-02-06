@@ -98,3 +98,25 @@
   /* border: rgb(19, 16, 15); */
   outline: none;
 }
+
+.details-reviews-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.item-details {
+  text-align: left;
+}
+.inner-text {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.inner-text h5 {
+  margin-top: 1%;
+}
+.comment-card p {
+  text-align: left;
+
+  margin-left: 2%;
+}

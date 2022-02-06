@@ -32,7 +32,7 @@ public class UserService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
         User user = userRepository.findByUserName(userName);
-        if (user == null) {
+        if (user == null) { // to handle the exception
             throw new UsernameNotFoundException("User not found in the database");
         }
         Collection<SimpleGrantedAuthority> authorities = new ArrayList<>();

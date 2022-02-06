@@ -62,7 +62,6 @@ function NavBar() {
           </Link>
           <Link to="/Reservation">Reserve Table</Link>
           <Link to="/Menu">Menu</Link>
-          <Link to="/Product">Products</Link>
           <Link to="/About">About</Link>
         </li>
       </div>

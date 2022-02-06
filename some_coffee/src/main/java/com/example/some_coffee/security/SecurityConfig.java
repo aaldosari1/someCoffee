@@ -21,6 +21,8 @@ import java.util.List;
 
 import static org.springframework.http.HttpMethod.GET;
 import static org.springframework.http.HttpMethod.POST;
+import static org.springframework.http.HttpMethod.PUT;
+import static org.springframework.http.HttpMethod.DELETE;
 
 @Configuration
 @EnableWebSecurity
@@ -58,15 +60,22 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests().antMatchers(POST, "/signIn/**").permitAll();
         http.authorizeRequests().antMatchers(POST, "/user/**").permitAll();
         http.authorizeRequests().antMatchers(GET, "/user/**").permitAll();
+        http.authorizeRequests().antMatchers(PUT, "/user/**").permitAll();
+        http.authorizeRequests().antMatchers(DELETE, "/user/**").permitAll();
+        http.authorizeRequests().antMatchers(PUT, "/reservation/**").permitAll();
+        http.authorizeRequests().antMatchers(DELETE, "/reservation/**").permitAll();
         http.authorizeRequests().antMatchers(POST, "/role").permitAll();
         http.authorizeRequests().antMatchers(GET, "/role").permitAll();
         http.authorizeRequests().antMatchers(POST, "/table").permitAll();
         http.authorizeRequests().antMatchers(GET, "/table").permitAll();
         http.authorizeRequests().antMatchers(POST, "/reservation").permitAll();
         http.authorizeRequests().antMatchers(GET, "/reservation").permitAll();
-        http.authorizeRequests().antMatchers(POST, "/review").permitAll();
-        http.authorizeRequests().antMatchers(GET, "/review").permitAll();
-        http.authorizeRequests().antMatchers("/product/**").hasAnyAuthority("Admin");
+        http.authorizeRequests().antMatchers(POST, "/review/**").permitAll();
+        http.authorizeRequests().antMatchers(GET, "/review/**").permitAll();
+        http.authorizeRequests().antMatchers(DELETE, "/review/**").permitAll();
+        http.authorizeRequests().antMatchers(GET, "/product/**").permitAll();
+        http.authorizeRequests().antMatchers(POST, "/product/**").permitAll();
+       // http.authorizeRequests().antMatchers("/product/**").hasAnyAuthority("Admin");
         http.authorizeRequests().anyRequest().authenticated();
         http.addFilter(customAuthenticationFilter);
         http.addFilterBefore(new CustomAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class);

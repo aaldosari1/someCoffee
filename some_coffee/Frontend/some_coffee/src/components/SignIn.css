@@ -73,6 +73,10 @@ hr {
   opacity: 0.9;
   border-radius: 30px;
 }
+.container a {
+  cursor: pointer;
+  color: rgb(0, 119, 255);
+}
 
 .registerbtn:hover {
   opacity: 1;

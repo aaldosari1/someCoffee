@@ -59,12 +59,12 @@
   list-style: none;
   display: flex;
   float: right;
-  color: rgb(214, 207, 207);
+  color: rgb(241, 241, 241);
 }
 
 .top1 a {
   float: right;
-  color: aliceblue;
+  color: rgb(255, 255, 255);
   padding: 8px 16px;
   text-decoration: none;
 }

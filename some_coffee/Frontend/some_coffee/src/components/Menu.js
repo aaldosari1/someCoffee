@@ -5,24 +5,17 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import NavBar from "./NavBar";
-import { FaStar } from "react-icons/fa";
 function Menu() {
-  //const
-
   const state = useSelector((state) => {
     return {
       items: state.itemReducer.items,
     };
   });
 
-  console.log(state.items);
   const navigate = useNavigate();
-  const details = () => {
-    navigate("/MenuDetails");
-  };
 
   const [products, setProducts] = useState([]);
-  const [myBool, setmyBool] = useState(false);
+  const [myBool, setmyBool] = useState(true);
 
   const toggle = () => {
     setmyBool(true);
@@ -36,6 +29,7 @@ function Menu() {
       .get(`http://localhost:8080/product`)
       .then((res) => {
         setProducts(res.data);
+        console.log("hehe");
       })
       .catch((err) => {
         console.log(err);
@@ -47,7 +41,7 @@ function Menu() {
       <div className="menu-nav">
         <NavBar />
       </div>
-      <h1>Menu page</h1>
+      <h1>Menu</h1>
       <hr />
       <div className="myDiv">
         <div className="Menu">
@@ -89,7 +83,6 @@ function Menu() {
                       <Link to={`/${element.id}`} className="product-name">
                         <img src={element.img} />
                         <h5> {element.name} </h5>
-                        <FaStar size={20} color="#ffc107" />
                       </Link>
                     </div>
                   );
@@ -106,7 +99,6 @@ function Menu() {
                     <Link to={`/${element.id}`} className="product-name">
                       <img src={element.img} />
                       <h5 className="product-name"> {element.name} </h5>
-                      <FaStar size={20} color="#ffc107" />
                     </Link>
                   </div>
                 );
@@ -114,22 +106,7 @@ function Menu() {
             })}
           </div>
         )}
-        {/* <div className="menu-imgs">
-          {items.map((element) => {
-            if (element.img) {
-              return <img src={element.img} />;
-            }
-          })}
-        </div> */}
       </div>
-      {/* {items.map((product) => (
-        <div key={product.productId}>
-          <Link to={`/MenuDetails/${product.id}`}>
-            <img src={product.img} />
-            <h2> {product.cat} </h2>
-          </Link>
-        </div>
-      ))} */}
     </div>
   );
 }

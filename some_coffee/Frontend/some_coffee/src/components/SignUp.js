@@ -1,6 +1,9 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addUser } from "../reducers/user/actions";
+import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+
 import "./SignUp.css";
 
 import axios from "axios";
@@ -14,21 +17,45 @@ function SignUp() {
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const navigate = useNavigate();
 
   const insertUser = () => {
-    const data = {
-      user: { name, userName, password, age, phone, email },
-      roleId: 1,
-    };
-    axios
-      .post("http://localhost:8080/user", data)
-      .then((res) => {
-        const action = addUser(res.data);
-        dispatch(action);
-      })
-      .catch((err) => {
-        console.log(err);
+    if (check() === 0) {
+      const data = {
+        user: { name, userName, password, age, phone, email },
+        roleId: 1,
+      };
+      axios
+        .post("http://localhost:8080/user", data)
+        .then((res) => {
+          const action = addUser(res.data);
+          dispatch(action);
+          navigate("/SignIn");
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    } else if (check() === 1) {
+      toast.error("Fill all the fields please", {
+        position: "top-center",
+        autoClose: 3500,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
       });
+    } else if (check() === 2) {
+      toast.error("Password does not match", {
+        position: "top-center",
+        autoClose: 3500,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    }
   };
 
   const getName = (e) => {
@@ -60,7 +87,19 @@ function SignUp() {
   };
 
   const check = () => {
-    if (password !== confirmPassword) console.log("pass word does not match");
+    if (
+      name === "" ||
+      userName === "" ||
+      password === "" ||
+      phone === "" ||
+      email === "" ||
+      confirmPassword === ""
+    ) {
+      return 1;
+    } else if (password !== confirmPassword) {
+      return 2;
+    }
+    return 0;
   };
 
   return (
@@ -104,17 +143,6 @@ function SignUp() {
             name="phone"
             required
           ></input>
-          {/* <br />
-      <label htmlFor="age">
-        <b>Age</b>
-      </label>
-      <input
-        type="text"
-        onChange={getAge}
-        placeholder="Enter User Name"
-        name="name"
-        required
-      ></input> */}
 
           <input
             type="password"
@@ -135,6 +163,9 @@ function SignUp() {
           <button className="registerbtn " onClick={insertUser}>
             Let's do this
           </button>
+        </div>
+        <div>
+          <ToastContainer />
         </div>
       </div>
     </div>

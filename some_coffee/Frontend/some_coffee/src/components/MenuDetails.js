@@ -11,43 +11,36 @@ function MenuDetails() {
   const { id } = useParams();
 
   const [products, setProducts] = useState([]);
-  const [writeReview, setWriteReview] = useState(false);
-  const [showReview, setShowReview] = useState(false);
-
-  const [reviews, setReviews] = useState([]);
-
+  const [test, setTest] = useState(true);
   const state = useSelector((state) => {
     return {
       user: state.userReducer.user,
       token: state.userReducer.token,
       items: state.itemReducer.items,
+      isLogedIn: state.userReducer.isLogedIn,
     };
   });
 
+  const testFun = () => {
+    setTest(true);
+  };
   console.log(state.items);
   const config = {
     headers: { Authorization: `Bearer ${state.token}` },
   };
 
-  const reviewField = () => {
-    setWriteReview(!writeReview);
-  };
-
-  const reviewsToggle = () => {
-    setShowReview(!showReview);
-  };
-
   useEffect(() => {
     axios
-      .get(`http://localhost:8080/product/`, config)
+      .get(`http://localhost:8080/product/`)
       .then((res) => {
         setProducts(res.data);
-        // console.log(res.data);
+        setTest(false);
+        console.log(test);
       })
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  }, [test]);
 
   return (
     <div>
@@ -74,66 +67,63 @@ function MenuDetails() {
         let count = 0;
         if (num === product.productId) {
           return (
-            <div key={product.productId}>
+            <div className="details-main" key={product.productId}>
               <br />
-              <h2> Item name: {product.name} </h2>
-              <h2> Item price: {product.price} </h2>
-              <h2> Item categery: {product.category} </h2>
-              {product.reviews.map((el) => {
-                total = el.rate + total;
-                count += 1;
-                if (product.reviews.length === count)
-                  return (
-                    <div>
-                      {" "}
-                      {[...Array(5)].map((star, i) => {
-                        const ratingValue = i + 1;
+              <div className="details-reviews-container">
+                <div className="item-details">
+                  <h3> Details: </h3>
+                  <div className="inner-text">
+                    <h4>name: </h4>
+                    <h5> {product.name} </h5>
+                    <h4>price: </h4>
+                    <h5> ${product.price} </h5>
+                    <h4>categery: </h4>
+                    <h5> {product.category} </h5>
+                  </div>
+                  {product.reviews.map((el) => {
+                    total = el.rate + total;
+                    console.log("total:" + total);
+                    count += 1;
+                    if (product.reviews.length === count)
+                      return (
+                        <div>
+                          {" "}
+                          {[...Array(5)].map((star, i) => {
+                            const ratingValue = i + 1;
 
-                        return (
-                          <label>
-                            <input
-                              type="radio"
-                              name="rating"
-                              //  value={ratingValue}
-                              //  onClick={() => setRating(ratingValue)}
-                            />
-                            <FaStar
-                              className="star"
-                              color={
-                                ratingValue <=
-                                Math.round(total / product.reviews.length)
-                                  ? "#ffc107"
-                                  : "#e4e5e9"
-                              }
-                              size={20}
-                              //  onMouseEnter={() => setHover(ratingValue)}
-                              // onMouseLeave={() => setHover(null)}
-                            />
-                          </label>
-                        );
-                      })}
-                    </div>
-                  );
-              })}
-              {writeReview ? (
+                            return (
+                              <label>
+                                <input type="radio" name="rating" />
+                                <FaStar
+                                  className="star"
+                                  color={
+                                    ratingValue <=
+                                    Math.round(total / product.reviews.length)
+                                      ? "#ffc107"
+                                      : "#e4e5e9"
+                                  }
+                                  size={20}
+                                />
+                              </label>
+                            );
+                          })}
+                        </div>
+                      );
+                  })}
+                </div>
+                {state.isLogedIn ? (
+                  <div className="review-star">
+                    <StarRating myId={product.productId} fun={testFun} />
+                    <br />
+                  </div>
+                ) : (
+                  <>
+                    <h4>To write a review you need to sign in !</h4>
+                  </>
+                )}
+              </div>
+              {true ? (
                 <>
-                  <StarRating myId={product.productId} />
-                  <br />
-                  <button onClick={reviewField} className="reviewsbtn">
-                    Cancel
-                  </button>
-                </>
-              ) : (
-                <button onClick={reviewField} className="reviewsbtn">
-                  Write review
-                </button>
-              )}
-              {showReview ? (
-                <>
-                  <button onClick={reviewsToggle} className="reviewsbtn">
-                    Cancel
-                  </button>
-
                   {product.reviews.map((e) => {
                     return (
                       <div className="comment-card">
@@ -145,12 +135,7 @@ function MenuDetails() {
 
                               return (
                                 <label>
-                                  <input
-                                    type="radio"
-                                    name="rating"
-                                    // value={ratingValue}
-                                    //  onClick={() => setRating(ratingValue)}
-                                  />
+                                  <input type="radio" name="rating" />
                                   <FaStar
                                     className="star"
                                     color={
@@ -159,8 +144,6 @@ function MenuDetails() {
                                         : "#e4e5e9"
                                     }
                                     size={20}
-                                    //  onMouseEnter={() => setHover(ratingValue)}
-                                    // onMouseLeave={() => setHover(null)}
                                   />
                                 </label>
                               );
@@ -177,9 +160,7 @@ function MenuDetails() {
                   })}
                 </>
               ) : (
-                <button onClick={reviewsToggle} className="reviewsbtn">
-                  show reviews
-                </button>
+                <></>
               )}{" "}
             </div>
           );

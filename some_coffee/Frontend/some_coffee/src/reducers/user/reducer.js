@@ -14,7 +14,7 @@ const userReducer = (state = initialState, { type, payload }) => {
       return {
         user: payload,
         token: state.token,
-        isLogedIn: true,
+        isLogedIn: false,
       };
     case "ADD_TOKEN":
       console.log("payloadK"); // to check

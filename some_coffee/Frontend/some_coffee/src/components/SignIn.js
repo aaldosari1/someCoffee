@@ -3,6 +3,7 @@ import { useState } from "react";
 import { addUser, addToken } from "../reducers/user/actions";
 import { useNavigate } from "react-router-dom";
 import jwt_decode from "jwt-decode";
+import { Link } from "react-router-dom";
 import "./SignIn.css";
 import axios from "axios";
 import { FaEdit } from "react-icons/fa";
@@ -95,7 +96,6 @@ function SignIn() {
   return (
     <div>
       <hr />
-      {/* <div className="SignIn-container"> */}
       <div className="SignIn-content">
         <img
           className="SignIn-img"
@@ -129,7 +129,7 @@ function SignIn() {
             Login
           </button>
           <p>
-            By Siging in you agree to our <a href="#">Terms and Privacy</a>
+            Don't have an account? <Link to="/SignUp">Sign up</Link>
           </p>
         </div>
       </div>
